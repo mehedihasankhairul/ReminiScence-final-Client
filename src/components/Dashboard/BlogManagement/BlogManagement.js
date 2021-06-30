@@ -12,7 +12,7 @@ const BlogManagement = () => {
 
   useEffect(() => {
     axios
-      .get("https://localhost:5000/blogs")
+      .get("https://fierce-brushlands-33291.herokuapp.com/")
       .then((res) => {
         setBlogs(res.data);
       })
@@ -31,7 +31,7 @@ const BlogManagement = () => {
         const loading = toast.loading("Deleting...Please wait!");
         const removedBlog = blogs.filter((item) => item._id !== id);
         axios
-          .delete(`https://localhost:5000/${id}`)
+          .delete(`https://fierce-brushlands-33291.herokuapp.com/${id}`)
           .then((res) => {
             toast.dismiss(loading);
             if (res.data) {
@@ -95,7 +95,7 @@ const BlogManagement = () => {
             })}
           </Table>
         ) : (
-          <BlogManagement />
+          <h1 className=" mt-5">Loading...</h1>
         )}
       </div>
     </Container>

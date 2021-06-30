@@ -9,7 +9,7 @@ const BlogDetails = () => {
 
     useEffect(() => {
         axios
-            .get(`https://ph-my-blog.herokuapp.com/all-blogs/${id}`)
+            .get(`https://fierce-brushlands-33291.herokuapp.com/${id}`)
             .then((res) => {
                 setBlog(res.data);
             })
