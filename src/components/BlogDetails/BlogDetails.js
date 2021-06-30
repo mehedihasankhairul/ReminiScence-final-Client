@@ -16,12 +16,14 @@ const BlogDetails = () => {
             })
             .catch((error) => toast.error(error.message));
     }, [id]);
+
     
+
 
     return (
         <>
 
-            <div className="Container h-full mt-20">
+            <div className="Container h-full mt-20 bg-gray-100">
                 {blog._id ? (
                     <div>
                         {" "}
@@ -42,7 +44,7 @@ const BlogDetails = () => {
                 ) : (
                     <div className="m-auto text-center">
                         <img
-                            src="https://i.pinimg.com/originals/68/1d/d2/681dd2c6e0f1b52a9a5dc7c995b14ef2.gif"
+                            src="https://i1.wp.com/codemyui.com/wp-content/uploads/2016/09/project-deadline-progress-bar-animation.gif?fit=880%2C440&ssl=1"
                             alt="spinner"
                             style={{ width: "30%", margin: 'auto' }}
                             className="m-auto"
@@ -50,7 +52,6 @@ const BlogDetails = () => {
                     </div>
                 )}
             </div>
-
         </>
     );
 };

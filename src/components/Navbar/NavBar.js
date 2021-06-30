@@ -68,14 +68,14 @@ const NavBar = () => {
                     </Nav>
                     {loggedInUser.email && loggedInUser.password ? (
 
-                        <Link to="login"> <button onClick={handelSignOut} id="navAction" className="mx-auto rounded-full hover:bg-green-700 hover:text-white hover:underline font-bold py-3 px-4 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                            Login
+                        <Link to="login"> <button id="navAction" onClick={handelSignOut}  className="mx-auto rounded-full hover:bg-green-700 hover:text-white hover:underline font-bold py-3 px-4 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                            Logout
                         </button>
                         </Link>
                     ) : (
-                        <button id="navAction" className="mx-auto rounded-full hover:bg-green-700 hover:text-white hover:underline font-bold py-3 px-4 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                            Log Out
-                        </button>
+                        <Link to="login">  <button to="login" id="navAction" className="mx-auto rounded-full hover:bg-green-700 hover:text-white hover:underline font-bold py-3 px-4 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                            Login
+                        </button></Link> 
 
                     )}
 
