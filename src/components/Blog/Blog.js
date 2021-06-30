@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { format } from "date-fns";
 
 const Blog = ({ blog: { _id, image, name, description } }) => {
 
@@ -7,6 +8,13 @@ const Blog = ({ blog: { _id, image, name, description } }) => {
     const handleDetail = () => {
         history.push(`/blog/${_id}`);
     };
+
+    // const date = Date.today.toDateString();
+
+    const date = new Date;
+    const formattedDate = format(date, "MMMM do, yyyy H:mma");
+
+    console.log(formattedDate);
 
     return (
 
@@ -19,14 +27,14 @@ const Blog = ({ blog: { _id, image, name, description } }) => {
                         src={image}
                         alt="" />
                     <div className="p-6 hover:bg-indigo-700 hover:text-white transition duration-300 ease-in">
-                        <h2 className=" text-base font-medium text-indigo-300 mb-1"> June 26. 2021</h2>
+                        <h2 className=" text-base font-medium text-indigo-300 mb-1"> {formattedDate}</h2>
 
                         {/**Blog Title*/}
                         <h1 className="text-2xl font-semibold mb-3">{name}</h1>
 
                         {/**Description*/}
                         <p className="leading-relaxed whitespace-normal">
-                            {description}
+                            {description.substr(0, 150)+'...'}
                         </p>
 
                         <div href="/blog/_id" className="flex items-center flex-wrap">
