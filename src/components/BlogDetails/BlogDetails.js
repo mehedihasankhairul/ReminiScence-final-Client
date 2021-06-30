@@ -9,13 +9,14 @@ const BlogDetails = () => {
 
     useEffect(() => {
         axios
-            .get(`https://fierce-brushlands-33291.herokuapp.com/${id}`)
+            .get(`https://fierce-brushlands-33291.herokuapp.com/blog/${id}`)
             .then((res) => {
                 setBlog(res.data);
+                console.log(res.data)
             })
             .catch((error) => toast.error(error.message));
     }, [id]);
-    console.log(blog);
+    
 
     return (
         <>
@@ -30,7 +31,7 @@ const BlogDetails = () => {
                             style={{ width: "auto" }}
                             className="m-auto"
                         />
-                        <h1 className="text-center">{blog.name}</h1>
+                        <h1 className="text-center text-large">{blog.name}</h1>
                         <div style={{ width: "60%", margin: 'auto' }}>
                             <p
                                 style={{ fontSize: '36px', textAlign: 'Justify' }}
@@ -41,9 +42,9 @@ const BlogDetails = () => {
                 ) : (
                     <div className="m-auto text-center">
                         <img
-                            src="https://cdn.dribbble.com/users/935167/screenshots/2896660/project-loader-colors.gif"
+                            src="https://i.pinimg.com/originals/68/1d/d2/681dd2c6e0f1b52a9a5dc7c995b14ef2.gif"
                             alt="spinner"
-                            style={{ width: "30%", margin: 'auto'}}
+                            style={{ width: "30%", margin: 'auto' }}
                             className="m-auto"
                         />
                     </div>

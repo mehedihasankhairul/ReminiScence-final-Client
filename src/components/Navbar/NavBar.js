@@ -1,6 +1,6 @@
 import firebase from "firebase/app";
 import React, { useContext } from "react";
-import { Button, Container, Nav, Navbar } from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
 import toast from "react-hot-toast";
 
 import { Link } from "react-router-dom";
@@ -74,7 +74,7 @@ const NavBar = () => {
                         </Link>
                     ) : (
                         <button id="navAction" className="mx-auto rounded-full hover:bg-green-700 hover:text-white hover:underline font-bold py-3 px-4 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                            Logout
+                            Log Out
                         </button>
 
                     )}

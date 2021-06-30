@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Container, Table } from "react-bootstrap";
 import toast from "react-hot-toast";
 import swal from "sweetalert";
+import ContentLoader from "../../ContentLoader/ContentLoader";
 
 
 const BlogManagement = () => {
@@ -12,17 +13,17 @@ const BlogManagement = () => {
 
   useEffect(() => {
     axios
-      .get("https://fierce-brushlands-33291.herokuapp.com/")
+      .get("https://fierce-brushlands-33291.herokuapp.com/blogs")
       .then((res) => {
         setBlogs(res.data);
       })
       .catch((error) => toast.error(error.message));
   }, []);
 
-  const handleDeleteService = (id) => {
+  const handleDeleteBlog = (id) => {
     swal({
-      title: "Are you sure?",
-      text: "Are you sure you want to delete this blog?",
+      title: "Do you want to Delete it?",
+      text: "Permanently Delete this blog.",
       icon: "warning",
       buttons: [true, "Yes"],
       dangerMode: true,
@@ -31,7 +32,7 @@ const BlogManagement = () => {
         const loading = toast.loading("Deleting...Please wait!");
         const removedBlog = blogs.filter((item) => item._id !== id);
         axios
-          .delete(`https://fierce-brushlands-33291.herokuapp.com/${id}`)
+          .delete(`https://fierce-brushlands-33291.herokuapp.com/delete/${id}`)
           .then((res) => {
             toast.dismiss(loading);
             if (res.data) {
@@ -53,7 +54,7 @@ const BlogManagement = () => {
             toast.dismiss(loading);
             swal(
               "Failed!",
-              `Something went wrong! Please try again...${err.massage}`,
+              ` Please try again to Delete this...${err.massage}`,
               "error",
               { dangerMode: true }
             );
@@ -64,12 +65,12 @@ const BlogManagement = () => {
 
   return (
     <Container>
-      <div className="shadow p-5 mt-5 pt-5 bg-white" style={{ borderRadius: "15px" }}>
+      <div className="shadow p-5 mt-24 pt-5 bg-white" style={{ borderRadius: "15px" }}>
         {blogs.length > 0 ? (
           <Table className="table-style" hover responsive>
             <thead className="bg-light">
               <tr>
-                <th>Blog Number</th>
+                <th>Blog No</th>
                 <th>Blog Title</th>
                 <th>Action</th>
               </tr>
@@ -84,7 +85,7 @@ const BlogManagement = () => {
                       <Button
                         variant="outline-danger"
                         className="p-1 ml-3 mb-0"
-                        onClick={() => handleDeleteService(blog._id)}
+                        onClick={() => handleDeleteBlog(blog._id)}
                       >
                         <FontAwesomeIcon icon={faTrash} className="mx-1" />
                       </Button>
@@ -95,7 +96,7 @@ const BlogManagement = () => {
             })}
           </Table>
         ) : (
-          <h1 className=" mt-5">Loading...</h1>
+          <ContentLoader />
         )}
       </div>
     </Container>

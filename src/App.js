@@ -7,11 +7,13 @@ import {
 import './App.css';
 import NavBar from './components/Navbar/NavBar';
 import Home from './components/Pages/Home/Home';
-import BlogDetails from './components/BlogDetails/BlogDetails';
+import Blogs from "./components/Blogs/Blogs";
 import Login from './components/Login/Login';
 import { createContext, useState } from 'react';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Dashboard from './components/Pages/Dashboard/Dashboard'
+import BlogDetails from './components/BlogDetails/BlogDetails';
+
 
 export const SignInContext = createContext();
 
@@ -33,8 +35,11 @@ function App() {
             <Route exact path='/'>
               <Home />
             </Route>
+            <Route path='/blogs'>
+              <Blogs />
+            </Route>
             <Route path='/blog/:id'>
-              <BlogDetails />
+            <BlogDetails />
             </Route>
             <PrivateRoute path="/dashboard/:panel">
               <Dashboard />
