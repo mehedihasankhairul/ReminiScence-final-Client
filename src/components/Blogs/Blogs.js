@@ -8,7 +8,7 @@ const Blogs = () => {
 
     useEffect(() => {
         axios
-            .get("https://fierce-brushlands-33291.herokuapp.com/all-blogs")
+            .get("https://fierce-brushlands-33291.herokuapp.com/blogs")
             .then((res) => {
                 setBlogs(res.data);
             })
